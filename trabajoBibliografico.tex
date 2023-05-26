@@ -55,21 +55,20 @@
 	\clearpage
 	\section{Results analysis}
 	
-	Five prespecified access point topologies have been considered to compare how do they affect the placement and movement trends of the jammers. To achieve this the simplified bilevel mixed-
-	integer program [BLMIP] has been used.
+	Five access point topologies have been considered to compare their connectivity and how do they affect the placement and movement trends of the jammers. To achieve this the simplified bilevel mixed-integer program [BLMIP] has been used.
 	
-	The Partite topology had three clusters with demand points clustering around them. The Perimeter topology distributed access points along the region's perimeter, allowing free movement of demand points. The Dense topology featured a central hub with clustered access points, catering to high demand independently. The Spacious topology randomly distributed access points to avoid proximity, resulting in demand points within range of one or two access points. The Median topology had uniformly distributed access points along diagonals and central lines, with clustering in the center, resembling a campus with a central area of high connectivity demand.
+	The Partite topology had three clusters of APs separated far enough apart that a demand point located between two clusters might not be able to connect to any access point in either cluster. The Perimeter topology distributed APs along the region's perimeter, allowing free movement of demand points and causing them to be separated. The Dense topology featured a central hub with clustered APs, it resembles a critical location which demands constant connectivity. The Spacious topology randomly distributed access points to avoid proximity, resulting in demand points within range of one or two access points. The Median topology had uniformly distributed access points along diagonals and central lines, with clustering in the center, resembling a campus with a central area of high connectivity demand.
 	
 
-	For all five topologies, three experiments with 10, 25 and 50 AP, each with a capacity of 15, 5 jammers with jamming radius of 150 feet, and 5 time periods. Each region was 1 square mile. The demand was realized ten times, with 100 demand points, and the results were averaged.
+	For all five topologies, three experiments with 10, 25 and 50 APs, each with a capacity of 15, 5 jammers with jamming radius of 150 feet, and 5 time periods. Each region was 1 square mile. The demand was realized ten times, with 100 demand points, and the results were averaged. This showed that the Spacious and Median topologies were closest to the optimal access point placement.
 	
 	It was found that access point placement near concentrations of demand points was crucial for ensuring robust network connectivity. However, access points too clustered together give jammers an easier time on severing connections. Therefore, the optimal solution should find a balance between these two factors. 
 	
 	Sensitivity has also been proved, concluding that adding a set of new access points did not improve overall connectivity. Meanwhile, were more jammers to be added to the original problem, the set of new APs would become significantly important.
 	%%Aqui habria que referenciar la ecuacion 3a que es la utilizada para comparar las topologias 
-	\ref{Eq3a} is a generalized utility function considering three aspects: range, unity and tolerance.
-	The range describes signal strength for access-demand point connections, unity represents uniform signal strength with either connected or unconnected links and tolerance introduces a threshold below which connections are considered too weak to be useful and are treated as unconnected.
 	
+	\ref{Eq3a} is a generalized utility function considering three aspects: range, unity and tolerance.
+	 The comparison of this utility function, both when the jammers were optimally deployed and when they were not, revealed that the Dense and Spacious topologies were the most affected by jammers.
 	
 	
 	\section{Conclusions}
