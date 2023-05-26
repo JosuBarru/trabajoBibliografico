@@ -58,57 +58,12 @@
 	Five prespecified access point topologies have been considered to compare how do they affect the placement and movement trends of the jammers. To achieve this the simplified bilevel mixed-
 	integer program [BLMIP] has been used.
 	
-	The Partite topology had three clusters with demand points clustering around them. The Perimeter topology distributed access points along the region's perimeter, allowing free movement of demand points. The Dense topology featured a central hub with clustered access points, catering to high demand independently. The Spacious topology randomly distributed access points to avoid proximity, resulting in demand points within range of one or two access points. The Median topology had uniformly distributed access points along diagonals and central lines, with clustering in the center, resembling a campus with a central area of high connectivity demand. It also includes an optimal topology, generated from solving one problem instance.
+	The Partite topology had three clusters with demand points clustering around them. The Perimeter topology distributed access points along the region's perimeter, allowing free movement of demand points. The Dense topology featured a central hub with clustered access points, catering to high demand independently. The Spacious topology randomly distributed access points to avoid proximity, resulting in demand points within range of one or two access points. The Median topology had uniformly distributed access points along diagonals and central lines, with clustering in the center, resembling a campus with a central area of high connectivity demand.
 	
-\begin{figure}[H]
-	\centering
-	\begin{subfigure}{0.3\textwidth}
-		\centering
-		\includegraphics[width=.8\linewidth]{partite.png}\quad
-		\caption{Partite}
-		\label{fig:1}
-	\end{subfigure}\hfil
-	\begin{subfigure}{0.3\textwidth}
-		\centering
-		\includegraphics[width=.8\linewidth]{perimeter.png}\quad
-		\caption{Perimeter}
-		\label{fig:2}
-	\end{subfigure}\hfil
-	\begin{subfigure}{0.3\textwidth}
-		\centering
-		\includegraphics[width=.8\linewidth]{dense.png}
-		\caption{Dense}
-		\label{fig:3}
-	\end{subfigure}
-	\medskip
-	\begin{subfigure}{0.3\textwidth}
-		\includegraphics[width=.8\linewidth]{spacious.png}\quad
-		\caption{Spacious}
-		\label{fig:4}
-	\end{subfigure}\hfil
-	\begin{subfigure}{0.3\textwidth}
-		\centering
-		\includegraphics[width=.8\linewidth]{median.png}\quad
-		\caption{Median}
-		\label{fig:5}
-	\end{subfigure}\hfil
-	\begin{subfigure}{0.3\textwidth}
-		\centering
-		\includegraphics[width=.8\linewidth]{optimal.png}
-		\caption{Optimal}
-		\label{fig:6}
-	\end{subfigure}
-	\caption{AP Topologies}
-	\label{fig:images}
-\end{figure}
-	
-	
+
 	For all five topologies, three experiments with 10, 25 and 50 AP, each with a capacity of 15, 5 jammers with jamming radius of 150 feet, and 5 time periods. Each region was 1 square mile. The demand was realized ten times, with 100 demand points, and the results were averaged.
 	
-	
-	Attending to the non-additive model, two methodologies were used to examine the runtime solutions: branch-and-bound and implicit enumeration. The latter algorithm significantly outperformed the first one. Whereas for the additive model, the implicit enumeration fared better than branch-and-bound, without dynamically generated covers. The introduction of dynamically generated covers had a significant positive impact on the overall computational speed. When applied exclusively to the branch-and-bound algorithm, the inclusion of dynamically generated covers yielded only marginal improvements compared to the basic implicit enumeration algorithm. 
-	
-	It was found that access point placement near concentrations of demand points was crucial for ensuring robust network connectivity. However, access points too clustered together give jammers an easier time on severing connections. Therefore, the optimal solution should find a balance between these two factors. The Spacious topology demonstrated the closest resemblance to the optimal access point placement, suggesting a high likelihood of establishing and maintaining connections. The non-additive model consistently yielded weaker results, except in the Partite topology, which exhibited clustering. In contrast, the additive model prioritized connections close to jammers, and the presence of access point clusters implied more effective access-demand point connections in proximity to jammers. When directly comparing the additive and non-additive models, significant relative errors were observed across all topologies, with the Dense and Median topologies showing the largest discrepancies due to the clustering of demand points.
+	It was found that access point placement near concentrations of demand points was crucial for ensuring robust network connectivity. However, access points too clustered together give jammers an easier time on severing connections. Therefore, the optimal solution should find a balance between these two factors. 
 	
 	Sensitivity has also been proved, concluding that adding a set of new access points did not improve overall connectivity. Meanwhile, were more jammers to be added to the original problem, the set of new APs would become significantly important.
 	
