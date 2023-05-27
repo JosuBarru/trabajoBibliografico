@@ -1,0 +1,42 @@
+% This is samplepaper.tex, a sample chapter demonstrating the
+% LLNCS macro package for Springer Computer Science proceedings;
+% Version 2.20 of 2017/10/04
+%
+\documentclass[runningheads]{llncs}
+
+% Used for displaying a sample figure. If possible, figure files should
+% be included in EPS format.
+%
+% If you use the hyperref package, please uncomment the following line
+% to display URLs in blue roman font according to Springer's eBook style:
+% \renewcommand\UrlFont{\color{blue}\rmfamily}
+
+\begin{document}
+\section{Problem explanation}
+\subsection{Context}
+
+ The objective of this paper is to determine the optimal design of a wireless access point array while considering the potential for jamming attacks. We aim to create a resilient WLAN by strategically placing the access points to withstand jamming. In the subsequent sections, we will use a tri-level multi-period mixed-integer (TL-MIP) approach to maximize the overall network performance.
+ 
+Wireless technology plays a significant role in many companies and organizations, making it a target for malicious actors who may exploit its vulnerabilities, such as jamming. The loss of an access point can disrupt connections for multiple users, which can have a detrimental impact on the business or organization.
+
+There is a wide range of literature available on this topic, including studies on general network interdiction, where certain nodes are introduced to a network to remove specific edges. However, this paper makes several contributions to the existing literature:
+\begin{enumerate}
+    \item Introducing the tri-level multi-period mixed-integer approach, which aims to maximize the overall network connectivity.
+    \item Considering additive interference, as the effects of a jammer are not limited to direct interference alone.
+    \item Investigating two solution methodologies: the implicit enumeration technique, which ensures accuracy, and dynamic constraint generation, which significantly reduces computational time.
+    \item Conducting experiments on various network topologies to examine their effectiveness.
+\end{enumerate}
+
+\section{Problem description}
+
+The problem model consists in a set of access points (each with a maximum number of connections), a set of possible locations for these access points, a set of jammers, and a set of possible locations for these jammers.
+There are also demand points that can establish a connection to an access point if two conditions are met:
+
+\begin{itemize}
+    \item The access point must not be at maximum capacity.
+    \item The connection cannot fall within the radius of a jammer.
+\end{itemize}
+
+The problem needs to be solved under the following condition: the set of jammers must be optimally placed to minimize network connectivity, while the access points should be placed in the best possible locations to mitigate the attack. Neither the jammers nor the access points know the locations of the demand points, as the demand points may relocate over time in an attempt to improve their connectivity.
+When an access point is jammed, the demand points that were connected to it should try to establish a new connection with an access point that can satisfy the previous conditions. The attackers should aim to bottle-neck the network by placing jammers in a way that forces the access points to reach their maximum capacity.
+\end{document}
