@@ -10,7 +10,7 @@
 \usepackage{float}
 \usepackage{subcaption}
 \captionsetup{compatibility=false}
-
+\usepackage[margin=3.5cm, top=3cm]{geometry}
 % Used for displaying a sample figure. If possible, figure files should
 % be included in EPS format.
 %
@@ -22,54 +22,30 @@
 
 \begin{document}
 	%
-	\title{Bibliographic work\thanks{Supported by organization x.}}
+	\title{Bibliographic work}
 	%
 	%\titlerunning{Abbreviated paper title}
 	% If the paper title is too long for the running head, you can set
 	% an abbreviated paper title here
 	%
-	\author{Erik Cembreros\inst{1}\orcidID{0000-1111-2222-3333} \and
-		Josu Barrutia\inst{2,3}\orcidID{1111-2222-3333-4444} \and
-		Third Author\inst{3}\orcidID{2222--3333-4444-5555}}
+	\author{Erik Cembreros,
+		Josu Barrutia \and
+		Julen Beristain}
 	%
 	\authorrunning{F. Author et al.}
 	% First names are abbreviated in the running head.
 	% If there are more than two authors, 'et al.' is used.
 	%
-	\institute{Princeton University, Princeton NJ 08544, USA \and
-		Springer Heidelberg, Tiergartenstr. 17, 69121 Heidelberg, Germany
-		\email{lncs@springer.com}\\
-		\url{http://www.springer.com/gp/computer-science/lncs} \and
-		ABC Institute, Rupert-Karls-University Heidelberg, Heidelberg, Germany\\
-		\email{\{abc,lncs\}@uni-heidelberg.de}}
+	\institute{Euskal Herriko Unibertsitatea}
 	%
 	\maketitle              % typeset the header of the contribution
-	%
-	\begin{abstract}
-			
-		
-		\keywords{First keyword  \and Second keyword \and Another keyword.}
-	\end{abstract}
-	%
-	%
-	%
-	
-	\clearpage
 
- \section{Problem explanation}
+\section{Problem explanation}
 \subsection{Context}
 
  The objective of this paper is to determine the optimal design of a wireless access point array while considering the potential for jamming attacks. We aim to create a resilient WLAN by strategically placing the access points to withstand jamming. In the subsequent sections, we will use a tri-level multi-period mixed-integer (TL-MIP) approach to maximize the overall network performance.
  
 Wireless technology plays a significant role in many companies and organizations, making it a target for malicious actors who may exploit its vulnerabilities, such as jamming. The loss of an access point can disrupt connections for multiple users, which can have a detrimental impact on the business or organization.
-
-There is a wide range of literature available on this topic, including studies on general network interdiction, where certain nodes are introduced to a network to remove specific edges. However, this paper makes several contributions to the existing literature:
-\begin{enumerate}
-    \item Introducing the tri-level multi-period mixed-integer approach, which aims to maximize the overall network connectivity.
-    \item Considering additive interference, as the effects of a jammer are not limited to direct interference alone.
-    \item Investigating two solution methodologies: the implicit enumeration technique, which ensures accuracy, and dynamic constraint generation, which significantly reduces computational time.
-    \item Conducting experiments on various network topologies to examine their effectiveness.
-\end{enumerate}
 
 \section{Problem description}
 
@@ -90,7 +66,7 @@ When an access point is jammed, the demand points that were connected to it shou
 A Tri-Level Multi-Period Mixed-Integer Programming [TL-MIP] model is used to represent the problem; i.e., a mathematical model with three parts, each corresponding to different decision maker entities (access points, jammers and demand points, in that order) where the decisions made to optimize the objective of each level depends on the previous level in the hierarchy; with a temporal variable, where demand points and jammers are allowed to relocate between time periods; and with both real and integer parameters and variables, more concretely, decision variables (booleans).
 
 The TL-MIP is split in the next three stages:
-
+\small
 \begin{equation}\tag{1a}
     Z_1 = Max \; W(y)
 \end{equation}
@@ -135,6 +111,7 @@ subject to:
 \begin{equation}\tag{3d}
     x_{ijt} \leq 1 - \sum_{k \in K} \sum_{l \in L} D_{ijklt} y_{klt} \forall i \in I, j \in J, t \in T [\gamma_{ijt}]
 \end{equation}
+\normalsize
 
 In the stage $(1)$ (access points' point of view), the objective function $(1a)$ maximizes the total signal strength (as we will see in its dependencies $(2a)$ and $(3a)$), while the constraint $(1b)$ requires all the access points to be placed.
 
@@ -145,14 +122,14 @@ In the stage $(3)$ (demand points' point of view), the objective function $(3a)$
 The demand points' distribution is calculated using a two-dimensional spatial Poisson process (reassigning the distribution in each time period), where the space is divided in cells and the probability of having some amount of demand points is proportional to the relation of the surface of each cell and the total one.
 
 Although the previously presented model is the basic one, the one that is the best to reflect the problem, the third and the second stages are unified to simplify the computation using the dual of the third stage, fixing the decision variables and relaxing the binary constraint. That way, the version of the model which is used for the computations is the same expressed before, changing $(2a)$, $(3a)$ and the constraints of the third stage with the objective function $(4a)$ and the constraints $(4b)$:
-
+\small
 \begin{equation}\tag{4a}
     W(y) = Min \; \sum_{i \in I} \sum_{j \in J} \sum_{t \in T} (\alpha_{it} + c \beta_{ijt} + (1 - \sum_{k \in K} \sum_{l \in L} D_{ijklt} y_{klt}) \gamma_{ijt})
 \end{equation}
 \begin{equation}\tag{4b}
     \alpha_{it}, \beta_{ijt}, \gamma_{ijt} \; \forall i \in I, j \in J, t \in T
 \end{equation}
-
+\normalsize
 All seen till the moment refers to the non-additive model, where jammers only affect to access and demand points if these last ones are inside the jamming radius (jammers can't work together summing their interference). Because of that, another (more realistic) model, the additive model, is presented too. In this model, the signal strength is $S_{ijt}=P_j G_{ijt} \; : \; G_ijt=(\frac{\omega}{d_{ijt}})^\eta$. As we can see, now the signal strength is inversely proportional to the distance. With this expression, the signal to interference plus noise ratio is used with some $\omega$ threshold to decide if a connection is established, and the $(3d)$ constraint is modified accordingly. At this point, the problem is reformulated again to transform it to a covering constraint problem and finally the same procedure as with the additive model is used to obtain a two level problem. All these transformations' strict formulations are skipped because they don't give more insight of the problem.
 
 
@@ -170,16 +147,16 @@ Three different methodologies have been used to solve the problem:
 
 \section{Results analysis}
 	
-	Five access point topologies have been considered to compare their connectivity and how do they affect the placement and movement trends of the jammers. To achieve this the simplified bilevel mixed-integer program [BLMIP] has been used.
-	
-	The Partite topology had three clusters of APs separated far enough apart that a demand point located between two clusters might not be able to connect to any access point in either cluster. The Perimeter topology distributed APs along the region's perimeter, allowing free movement of demand points and causing them to be separated. The Dense topology featured a central hub with clustered APs, it resembles a critical location which demands constant connectivity. The Spacious topology randomly distributed access points to avoid proximity, resulting in demand points within range of one or two access points. The Median topology had uniformly distributed access points along diagonals and central lines, with clustering in the center, resembling a campus with a central area of high connectivity demand.
+	Five AP topologies have been considered to compare their connectivity and how do they affect the placement and movement trends of the jammers. To achieve this the simplified bilevel mixed-integer program [BLMIP] has been used.
+
+	The Partite topology had three clusters of APs separated far enough apart that a demand point located between two clusters might not be able to connect to any AP in either cluster. The Perimeter topology distributed APs along the region's perimeter, allowing free movement of demand points and causing them to be separated. The Dense topology featured a central hub with clustered APs, it resembles a critical location which demands constant connectivity. The Spacious topology randomly distributed APs to avoid proximity, resulting in demand points within range of one or two APs. The Median topology had uniformly distributed APs along diagonals and central lines, with clustering in the center, resembling a campus with a central area of high connectivity demand.
 	
 
-	For all five topologies, three experiments with 10, 25 and 50 APs, each with a capacity of 15, 5 jammers with jamming radius of 150 feet, and 5 time periods. Each region was 1 square mile. The demand was realized ten times, with 100 demand points, and the results were averaged. This showed that the Spacious and Median topologies were closest to the optimal access point placement.
+	For all five topologies, three experiments with 10, 25 and 50 APs, each with a capacity of 15, 5 jammers with jamming radius of 150 feet, and 5 time periods. Each region was 1 square mile. The demand was realized ten times, with 100 demand points, and the results were averaged. This showed that the Spacious and Median topologies were closest to the optimal AP placement.
 	
-	It was found that access point placement near concentrations of demand points was crucial for ensuring robust network connectivity. However, access points too clustered together give jammers an easier time on severing connections. Therefore, the optimal solution should find a balance between these two factors. 
+	It was found that AP placement near concentrations of demand points was crucial for ensuring robust network connectivity. However, AP too clustered together give jammers an easier time on severing connections. Therefore, the optimal solution should find a balance between these two factors. 
 	
-	Sensitivity has also been proved, concluding that adding a set of new access points did not improve overall connectivity. Meanwhile, were more jammers to be added to the original problem, the set of new APs would become significantly important.
+	Sensitivity has also been proved, concluding that adding a set of new AP did not improve overall connectivity. Meanwhile, were more jammers to be added to the original problem, the set of new APs would become significantly important.
 	%%Aqui habria que referenciar la ecuacion 3a que es la utilizada para comparar las topologias 
 	
 	\ref{Eq3a} is a generalized utility function considering three aspects: range, unity and tolerance.
@@ -193,21 +170,5 @@ Three different methodologies have been used to solve the problem:
 	
 	While this research considers the placement of both access points and jammers, the placement of demand points has not been taken into account. Considering this would lead to a stochastic problem rather than a deterministic one.
 	
- 
-
-	%
-	% ---- Bibliography ----
-	%
-	% BibTeX users should specify bibliography style 'splncs04'.
-	% References will then be sorted and formatted in the correct style.
-	%
-	% \bibliographystyle{splncs04}
-	% \bibliography{mybibliography}
-	%
-	\begin{thebibliography}{8}
-		\bibitem{ref_article1}
-		Author, F.: Article title. Journal \textbf{2}(5), 99--110 (2016)
-		
-	\end{thebibliography}
 \end{document}
 
